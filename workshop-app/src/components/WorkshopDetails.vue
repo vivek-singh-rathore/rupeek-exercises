@@ -92,7 +92,7 @@
                                             <div class="col-1">
                                                 
                                                     
-                                                <Voter :upvoteCount="session.upvoteCount" @upvote="applyUpVote(session)" @downvote="applyDownVote(session)" />
+                                                <Voter :upvoteCount="session.upvoteCount" @upvote="num=>applyUpVote(session,num)" @downvote="num=>applyDownVote(session,num)" />
                                                 
                                             </div>
                                             <div class="col-11">
@@ -139,7 +139,7 @@ export default {
             upvote(session.id)
             .then( newSession =>{
                 session.upvoteCount = newSession.upvoteCount;
-                Vue.$toast.open(`Vote for ${newSession.name} was registered`, 3000);
+                Vue.$toast.open(`Vote for ${session.name} was registered`, 3000);
             })
             .catch( error =>{
                 console.log(error.message);
@@ -149,7 +149,7 @@ export default {
             downvote(session.id)
             .then( newSession =>{
                 session.upvoteCount = newSession.upvoteCount;
-                Vue.$toast.open(`Vote for ${newSession.name} was registered`, 3000);
+                Vue.$toast.open(`Vote for ${session.name} was registered`, 3000);
             })
             .catch( error =>{
                 console.log(error.message);
